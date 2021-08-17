@@ -1,0 +1,11 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+#page {
+    min-height: 100vh;
+    display: flex;
+    flex-flow:column nowrap;
+    justify-content: space-between;
+}

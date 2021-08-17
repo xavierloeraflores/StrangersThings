@@ -13,8 +13,13 @@ const App = () => {
         <Route path='/profile'>
             Profile
         </Route>
+        <Route path='/login'>
+            Log In 
+        </Route>
+        <Route path='/register'>
+            Register
+        </Route>
         </>
-
     )
 }
 export default App;

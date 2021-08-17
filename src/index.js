@@ -1,9 +1,10 @@
 import React  from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter} from 'react-router-dom'
-import App from './app';
-import Nav from './components/Nav'
-import Footer from './components/Footer'
+import App from './App';
+import Nav from './components/nav/Nav'
+import Footer from './components/footer/Footer'
+import './style.css'
 
 
 
@@ -11,9 +12,11 @@ import Footer from './components/Footer'
 const Index = () => {
     return (
         <BrowserRouter>
+        <div id='page'>
             <Nav/>
             <App />
             <Footer/>
+        </div>
         </BrowserRouter>
 
     )
