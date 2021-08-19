@@ -5,7 +5,7 @@ import Posts from './components/Posts/Posts';
 const App = () => {
     return (
         <>
-        <Route path='/home'>
+        <Route exact path='/'>
             HOME
         </Route>
         <Route path ='/posts'>

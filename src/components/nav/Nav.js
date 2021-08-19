@@ -8,7 +8,7 @@ const Nav = () => {
         <div id='Nav'>
             <span>Strangers Things</span>
             <div>
-                <Link to = '/home'>Home</Link>
+                <Link to = '/'>Home</Link>
                 <Link to = '/posts'>Post</Link>
                 <Link to = '/profile'>Profile</Link>
                 <Link to = '/'>Log Out</Link>
