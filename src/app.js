@@ -1,5 +1,6 @@
 import React  from 'react'
 import { Route } from 'react-router';
+import Posts from './components/Posts/Posts';
 
 const App = () => {
     return (
@@ -8,7 +9,7 @@ const App = () => {
             HOME
         </Route>
         <Route path ='/posts'>
-            Posts
+            <Posts />
         </Route>
         <Route path='/profile'>
             Profile
