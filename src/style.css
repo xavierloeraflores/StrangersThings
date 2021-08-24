@@ -9,3 +9,9 @@
     flex-flow:column nowrap;
     justify-content: space-between;
 }
+#nav {
+    display:flex;
+}
+#footer{
+    background-color: cadetblue;
+}
