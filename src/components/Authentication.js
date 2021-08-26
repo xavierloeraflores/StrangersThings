@@ -1,6 +1,7 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect,useContext } from 'react'
 import {useParams, useHistory} from 'react-router-dom'
 import API from '../apiClient'
+import { UserContext } from '../context/UserContext';
 //Hello
 //World
 
@@ -10,11 +11,13 @@ const Authentication = () => {
     const params = useParams()
     const endpoint = '/users/' + params.method
     const history = useHistory()
+    const {user,setUser} = useContext(UserContext)
 
     useEffect(()=>{
-        if (localStorage.getItem("userToken").length>1)
+        if (user.isLoggedIn===true)
         history.push("/home") // sends the user back to home when signed in. 
     }, )
+    
     return (
         <div>
             <h1>{params.method}</h1>

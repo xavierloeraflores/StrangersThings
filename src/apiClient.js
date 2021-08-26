@@ -11,9 +11,6 @@ class API {
         return  data.data ? data.data : null
     }
 
-    static async authenticate2(endpoint, body){
-        console.log("API", endpoint, body.username, body.password)
-    }
     static async authenticate(endpoint, bodyData){
         // console.log(baseURL+endpoint)
         const resp = await fetch(baseURL+endpoint,{
@@ -49,6 +46,28 @@ class API {
         const endpoint = '/posts'
         const data = await this.request( endpoint )
         return data.posts;
+    }
+
+    static async makePost(token, postData){
+        // console.log(baseURL+endpoint)
+        const endpoint = '/posts'
+        const resp = await fetch(baseURL+endpoint,{
+            method:'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+              },
+              body: JSON.stringify({
+                post: {
+                  title: postData.title,
+                  description: postData.description,
+                  price: postData.price
+                }
+              })
+        })
+        const data = await resp.json()
+        data.error ? console.log("error in API Call"): null
+        return  data.data ? data.data : null
     }
 }
 

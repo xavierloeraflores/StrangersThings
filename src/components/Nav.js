@@ -5,7 +5,11 @@ import { UserContext } from '../context/UserContext';
 
 const Nav = () => {
 
-    const user = useContext(UserContext)
+    const {user,setUser} = useContext(UserContext)
+    const logOut = () => {
+        setUser({token:'', name:'', isLoggedIn:false})
+        localStorage.setItem('userToken', '')
+    }
 
     return (
         <div id='Nav'>
@@ -14,10 +18,13 @@ const Nav = () => {
                 <Link to = '/'>Home</Link>
                 <Link to = '/posts'>Post</Link>
                 <Link to = '/profile'>Profile</Link>
-                <Link to = '/user/login'>Log In</Link>
-                <Link to = '/user/register'>Register</Link>
-                <Link to = '/'>Log Out</Link>
-                <p>{user}</p>
+                {
+                    user.isLoggedIn ? <Link to = '/' onClick={logOut}>Log Out</Link>: (<>
+                            <Link to = '/user/login'>Log In</Link>
+                            <Link to = '/user/register'>Register</Link>
+                        </>)
+                }
+                <p>{user.name}</p>
 
             </div>
         </div>
