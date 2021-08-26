@@ -23,7 +23,9 @@ const Authentication = () => {
             <h1>{params.method}</h1>
             <form onSubmit={async event=>{
                 event.preventDefault()
-                await API.authenticate(endpoint, {username:username, password:password})
+                const data = await API.authenticate(endpoint, {username:username, password:password})
+                console.log("XXX",data)
+                data.token?setUser((userData)=>({...userData, ['token']:data.token, ['isLoggedIn']:true})) :alert('error')
                 history.push("/home") //Routes the user back to home
                 }}>
                 <label htmlFor='username'>Username</label>
