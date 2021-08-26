@@ -1,8 +1,9 @@
 import React  from 'react'
 import { Route } from 'react-router';
-import Posts from './components/Posts/Posts';
+import Posts from './components/Posts';
 import Authentication from './components/Authentication'
 import Test from './components/Test';
+import Postform from './components/Postform';
 
 const App = () => {
     return (
@@ -11,10 +12,13 @@ const App = () => {
         <Route exact path='/'>
             HOME
         </Route>
-        <Route path ='/posts'>
+        <Route exact path ='/posts'>
             <Posts />
         </Route>
-        <Route path='/profile'>
+        <Route exact path='/postform'>
+            <Postform/>
+        </Route>
+        <Route exact path='/profile'>
             Profile
         </Route>
         <Route path='/user/:method'>

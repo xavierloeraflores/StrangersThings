@@ -1,8 +1,11 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { Link } from 'react-router-dom';
+import { UserContext } from '../context/UserContext';
 
 
 const Nav = () => {
+
+    const user = useContext(UserContext)
 
     return (
         <div id='Nav'>
@@ -14,6 +17,8 @@ const Nav = () => {
                 <Link to = '/user/login'>Log In</Link>
                 <Link to = '/user/register'>Register</Link>
                 <Link to = '/'>Log Out</Link>
+                <p>{user}</p>
+
             </div>
         </div>
     )

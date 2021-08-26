@@ -15,3 +15,7 @@
 #footer{
     background-color: cadetblue;
 }
+form {
+    display: flex;
+    flex-flow:column nowrap;
+}
