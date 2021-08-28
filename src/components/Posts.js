@@ -21,7 +21,10 @@ const Posts = () => {
         <div>
             <Link to='/postform'>Add new post.</Link>
             {posts ? console.log(posts):null}
+            <div id='posts'>
+
             {posts ? posts.map((post,idx)=>{return <Post key={idx} post={post}/>}):null}
+            </div>
         </div>
     )
 }

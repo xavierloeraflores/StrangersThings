@@ -12,20 +12,19 @@ const Nav = () => {
     }
 
     return (
-        <div id='Nav'>
+        <div id='nav'>
             <span>Strangers Things</span>
-            <div>
-                <Link to = '/'>Home</Link>
-                <Link to = '/posts'>Post</Link>
-                <Link to = '/profile'>Profile</Link>
+            <div id='nav-links'>
+                <Link className='nav-link' to = '/'>Home</Link>
+                <Link className='nav-link' to = '/posts'>Post</Link>
+                <Link className='nav-link' to = '/profile'>Profile</Link>
                 {
                     user.isLoggedIn ? <Link to = '/' onClick={logOut}>Log Out</Link>: (<>
-                            <Link to = '/user/login'>Log In</Link>
-                            <Link to = '/user/register'>Register</Link>
+                            <Link className='nav-link' to = '/user/login'>Log In</Link>
+                            <Link className='nav-link' to = '/user/register'>Register</Link>
                         </>)
                 }
                 <p>{user.name}</p>
-
             </div>
         </div>
     )
