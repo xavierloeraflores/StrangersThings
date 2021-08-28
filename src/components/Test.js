@@ -32,6 +32,20 @@ const Test = () =>{
                 console.log(data)
             
             }}>Delete Post</button>
+            <button onClick={async (event)=> {
+                //Test Code here 
+                const data = await API.authenticate2('/users/login', {username:'Hello', password:'World'})
+            
+                console.log(data)
+            
+            }}>Log In</button>
+            <button onClick={async (event)=> {
+                //Test Code here 
+                const data = await API.getPosts2()
+            
+                console.log(data)
+            
+            }}>Get Posts</button>
         </div>
     )
 }

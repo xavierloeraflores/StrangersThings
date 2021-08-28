@@ -14,9 +14,9 @@ const Post = (props) => {
         <br />
         <span>{description}</span>
         <br />
-        <button onClick={()=>{
+        {isAuthor ? <button onClick={()=>{
             API.deletePost(user.token, _id)
-        }} > Delete Post</button>
+        }}> Delete Post</button>:null}
         </div>
 
     )
