@@ -2,14 +2,6 @@
 const baseURL = 'https://strangers-things.herokuapp.com/api/2021-SJS-RM-WEB-PT'
 
 class API {
-    // static async request(endpoint){
-    //     console.log(baseURL+endpoint)
-    //     const resp = await fetch(baseURL+endpoint)
-    //     const data = await resp.json()
-    //     console.log(data)
-    //     data.error ? console.log("error in API Call"): null
-    //     return  data.data ? data.data : null
-    // }
     static async request({endpoint, method, body, token}){
       try{
         let headers = {'Content-Type': 'application/json'}
@@ -36,25 +28,6 @@ class API {
       }
   }
 
-    static async authenticate1(endpoint, bodyData){
-        // console.log(baseURL+endpoint)
-        const resp = await fetch(baseURL+endpoint,{
-            method:'POST',
-            headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({
-                user: {
-                  username: bodyData.username,
-                  password: bodyData.password
-                }
-              })
-        })
-        const data = await resp.json()
-        data.error ? console.log("error in API Call"): null
-        localStorage.setItem('userToken', data.data.token)
-        return  data.data ? data.data : null
-    }
     static async authenticate(endpoint, bodyData){
       const data = await this.request({
         endpoint:endpoint,
@@ -69,11 +42,7 @@ class API {
     }
 
 
-    static async getPosts1(){
-        const endpoint = '/posts'
-        const data = await this.request( endpoint )
-        return data.posts;
-    }
+
     static async getPosts(){
       const endpoint = '/posts'
         const data = await this.request({
@@ -84,27 +53,6 @@ class API {
         return data.posts
     }
 
-    static async makePost1(token, postData){
-        // console.log(baseURL+endpoint)
-        const endpoint = '/posts'
-        const resp = await fetch(baseURL+endpoint,{
-            method:'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-              },
-              body: JSON.stringify({
-                post: {
-                  title: postData.title,
-                  description: postData.description,
-                  price: postData.price
-                }
-              })
-        })
-        const data = await resp.json()
-        data.error ? console.log("error in API Call"): null
-        return  data.data ? data.data : null
-    }
     static async makePost(token, postData){
       const endpoint = '/posts'
         const data = await this.request({
