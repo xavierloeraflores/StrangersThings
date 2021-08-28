@@ -17,14 +17,21 @@ const Test = () =>{
                 setUser((userData)=>({...userData, ['token']:"bruhbruh", ['isLoggedIn']:true}))
             }}>SetUser </button>
 
-
+            {/* 6127131ea314950017784e5c */}
             <button onClick={async (event)=> {
                 //Test Code here 
                 const data = await API.makePost(localStorage.getItem('userToken'), {title:'hello',description:'world', price:'$123' })
             
                 console.log(data)
             
-            }}>SetUser </button>
+            }}>Make Post</button>
+            <button onClick={async (event)=> {
+                //Test Code here 
+                const data = await API.deletePost(user.token, '6127131ea314950017784e5c')
+            
+                console.log(data)
+            
+            }}>Delete Post</button>
         </div>
     )
 }

@@ -69,6 +69,20 @@ class API {
         data.error ? console.log("error in API Call"): null
         return  data.data ? data.data : null
     }
+    static async deletePost(token,postID){
+      // console.log(baseURL+endpoint)
+      const endpoint = '/posts/'
+      const resp = await fetch(baseURL+endpoint+postID,{
+          method:'DELETE',
+          headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`
+            }
+        })
+        const data = await resp.json()
+        data.error ? console.log("error in API Call"): null
+        return  data.data ? data.data : null
+    }
 }
 
 export default API;
