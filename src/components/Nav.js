@@ -19,7 +19,7 @@ const Nav = () => {
                 <Link className='nav-link' to = '/posts'>Post</Link>
                 <Link className='nav-link' to = '/profile'>Profile</Link>
                 {
-                    user.isLoggedIn ? <Link to = '/' onClick={logOut}>Log Out</Link>: (<>
+                    user.isLoggedIn ? <Link className='nav-link' to = '/' onClick={logOut}>Log Out</Link>: (<>
                             <Link className='nav-link' to = '/user/login'>Log In</Link>
                             <Link className='nav-link' to = '/user/register'>Register</Link>
                         </>)

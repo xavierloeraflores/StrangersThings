@@ -92,6 +92,37 @@ class API {
         })
         return data
     }
+
+    static async makeMessage(token, postID, message){
+      const endpoint = `/posts/${postID}/messages`
+        const data = await this.request({
+          endpoint:endpoint,
+          method:'POST',
+          body:{message: {
+            content: message,
+          }},
+          token:token
+        })
+        return data
+    }
+
+    static async editPost(token, postID, postData){
+      const endpoint = '/posts/'+postID
+      const data = await this.request({
+        endpoint:endpoint,
+        method:'PATCH',
+        body:{post: {
+          title: postData.title,
+          description: postData.description,
+          price: postData.price
+        }},
+        token:token
+      })
+      return data
+    }
+
+
+
 }
 
 export default API;
