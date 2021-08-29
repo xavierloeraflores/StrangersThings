@@ -7,14 +7,17 @@ export const UserProvider = ({children})=> {
     const [user, setUser] = useState({
         token: '',
         name: '',
-        isLoggedIn: false
+        id: '',
+        messages:{},
+        posts:{}
     })
+    const [isLoggedIn, setIsLoggedIn] = useState(false) 
 
     useEffect(()=>{
-        if (user.token!=''&& !user.isLoggedIn) setUser((userData) => ({ ...userData, ['isLoggedIn']: true })) 
-        if (user.token===''&&user.isLoggedIn) setUser((userData) => ({ ...userData, ['isLoggedIn']: false }))
+        // if (user.token!=''&& !isLoggedIn) setIsLoggedIn(true)
+        // if (user.token===''&&isLoggedIn) setIsLoggedIn(false)
     },[user])
 
 
-    return <UserContext.Provider value={{user, setUser}}>{children}</UserContext.Provider>;
+    return <UserContext.Provider value={{user, setUser, isLoggedIn, setIsLoggedIn }}>{children}</UserContext.Provider>;
 }

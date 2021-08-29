@@ -1,15 +1,21 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import {Link} from 'react-router-dom'
 import API from '../apiClient'
 import Post from './Post'
 import Postform from './Postform'
+import { UserContext } from '../context/UserContext'
 
 const Posts = () => {
     const [posts,setPosts] = useState([])
+    const {user, isLoggedIn} = useContext(UserContext)
 
     
     useEffect(async ()=>{
-        const postData = await API.getPosts()
+
+        let postData = []
+
+        if(!isLoggedIn) postData= await API.getPosts()
+        if(isLoggedIn) postData= await API.getPosts(user.token)
         console.log(postData)
         setPosts(postData)
 
@@ -19,7 +25,7 @@ const Posts = () => {
     
     return (
         <div>
-            <Link to='/postform'>Add new post.</Link>
+            {isLoggedIn? <Link to='/postform'>Add new post.</Link>:<span>Sign in to make post</span>}
             {posts ? console.log(posts):null}
             <div id='posts'>
 

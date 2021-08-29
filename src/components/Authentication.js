@@ -11,10 +11,10 @@ const Authentication = () => {
     const params = useParams()
     const endpoint = '/users/' + params.method
     const history = useHistory()
-    const {user,setUser} = useContext(UserContext)
+    const {user,setUser, isLoggedIn, setIsLoggedIn} = useContext(UserContext)
 
     useEffect(()=>{
-        if (user.isLoggedIn===true)
+        if (isLoggedIn===true)
         history.push("/home") // sends the user back to home when signed in. 
     }, )
     
@@ -25,8 +25,12 @@ const Authentication = () => {
                 event.preventDefault()
                 const data = await API.authenticate(endpoint, {username:username, password:password})
                 console.log("XXX",data)
-                data.token?setUser((userData)=>({...userData, ['token']:data.token, ['isLoggedIn']:true})) :alert('error')
-                history.push("/home") //Routes the user back to home
+                if(data.token){
+                    setIsLoggedIn(true)
+                    setUser((userData)=>({...userData, ['token']:data.token}))
+                    history.push("/home")
+                }else alert('error')
+                 //Routes the user back to home
                 }}>
                 <label htmlFor='username'>Username</label>
                 <input type='text' id='username' name='username' onChange={(event)=>{

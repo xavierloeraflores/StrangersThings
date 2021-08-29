@@ -8,7 +8,7 @@ const Post = (props) => {
     const {author, description, title, isAuthor, _id} = props.post
     return (
         <div className='post'>
-        <span>{title}</span>
+        <span><b>{title}</b></span>
         <br />
         <span>{author.username}</span>
         <br />

@@ -11,8 +11,6 @@ class API {
         headers: headers,
       }
       if(body) request['body']= JSON.stringify(body)
-
-      console.log('request', request)
       
       const resp = await fetch(baseURL+endpoint,request)
       const data = await resp.json()
@@ -25,6 +23,9 @@ class API {
       }
       catch(err){
         console.error(err)
+      }
+      finally{
+        console.log('request', endpoint)
       }
   }
 
@@ -41,47 +42,33 @@ class API {
       return data
     }
 
-
-
-    static async getPosts(){
+    static async getPosts(token){
       const endpoint = '/posts'
-        const data = await this.request({
-          endpoint:endpoint,
-          method:'GET'
-        })
-        console.log("XXX",data)
-        return data.posts
+      let request =  {
+        endpoint:endpoint,
+        method:'GET'
+      }
+      if (token) request['token']=token
+      const data = await this.request(request)
+      console.log("XXX",data)
+      return data.posts
     }
 
     static async makePost(token, postData){
       const endpoint = '/posts'
-        const data = await this.request({
-          endpoint:endpoint,
-          method:'POST',
-          body:{post: {
-            title: postData.title,
-            description: postData.description,
-            price: postData.price
+      const data = await this.request({
+        endpoint:endpoint,
+        method:'POST',
+        body:{post: {
+          title: postData.title,
+          description: postData.description,
+          price: postData.price
           }},
-          token:token
+        token:token
         })
         return data
     }
 
-    static async deletePost1(token,postID){
-      // console.log(baseURL+endpoint)
-      const endpoint = '/posts/'
-      const resp = await fetch(baseURL+endpoint+postID,{
-          method:'DELETE',
-          headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${token}`
-            }
-        })
-        const data = await resp.json()
-        data.error ? console.log("error in API Call"): null
-        return  data.data ? data.data : null
-    }
 
     static async deletePost(token, postID){
       const endpoint = '/posts/'+postID
@@ -120,8 +107,16 @@ class API {
       })
       return data
     }
+    static async getProfile(token){
+      const endpoint='/users/me'
+      const data = await this.request({
+        endpoint:endpoint,
+        method:'GET',
+        token:token
+      })
+      return data
 
-
+    }
 
 }
 

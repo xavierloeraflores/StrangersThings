@@ -3,13 +3,13 @@ import { UserContext } from '../context/UserContext'
 import API from '../apiClient'
 
 const Test = () =>{
-    const {user, setUser} = useContext(UserContext)
+    const {user, setUser, isLoggedIn} = useContext(UserContext)
     return (
         <div>
             <button onClick={(event)=>{
                 //Test Code here 
                 let log = localStorage.getItem('userToken')
-                console.log(log, user)
+                console.log("XXX",log, user, isLoggedIn)
             }}>Test </button>
 
             <button onClick={(event)=>{
@@ -34,14 +34,14 @@ const Test = () =>{
             }}>Delete Post</button>
             <button onClick={async (event)=> {
                 //Test Code here 
-                const data = await API.authenticate2('/users/login', {username:'Hello', password:'World'})
+                const data = await API.authenticate('/users/login', {username:'Hello', password:'World'})
             
                 console.log(data)
             
             }}>Log In</button>
             <button onClick={async (event)=> {
                 //Test Code here 
-                const data = await API.getPosts2()
+                const data = await API.getPosts()
             
                 console.log(data)
             

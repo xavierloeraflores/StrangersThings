@@ -7,7 +7,7 @@ const Postform = () => {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [price, setPrice]=useState('')
-    const {user} = useContext(UserContext)
+    const {user, isLoggedIn} = useContext(UserContext)
     const history = useHistory()
 
     useEffect(()=>{
@@ -17,7 +17,7 @@ const Postform = () => {
     },[title, description,price])
 
     useEffect(()=>{
-        if (user.isLoggedIn===false){
+        if (isLoggedIn===false){
             console.log(user)
             history.push("/home") // sends the user back to home when the user isnt signed in. 
             alert("You need to be signed in")

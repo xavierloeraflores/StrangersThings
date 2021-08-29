@@ -4,6 +4,7 @@ import Posts from './components/Posts';
 import Authentication from './components/Authentication'
 import Test from './components/Test';
 import Postform from './components/Postform';
+import Profile from './components/Profile';
 
 const App = () => {
     return (
@@ -19,7 +20,7 @@ const App = () => {
             <Postform/>
         </Route>
         <Route exact path='/profile'>
-            Profile
+           <Profile/>
         </Route>
         <Route path='/user/:method'>
             <Authentication/>
