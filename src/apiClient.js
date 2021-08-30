@@ -11,7 +11,7 @@ class API {
         headers: headers,
       }
       if(body) request['body']= JSON.stringify(body)
-      
+      console.log("options",request)
       const resp = await fetch(baseURL+endpoint,request)
       const data = await resp.json()
       
@@ -25,7 +25,7 @@ class API {
         console.error(err)
       }
       finally{
-        console.log('request', endpoint)
+        console.log('request', baseURL+endpoint)
       }
   }
 
