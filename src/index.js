@@ -12,7 +12,6 @@ import { UserProvider} from './context/UserContext';
 
 const Index = () => {
 
-
     return (
         <BrowserRouter>
         <UserProvider>

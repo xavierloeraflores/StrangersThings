@@ -13,14 +13,14 @@ const App = () => {
     useEffect(()=>{
         const storedToken= localStorage.getItem('userToken')
         console.log("TOKEN",storedToken)
-        if (storedToken.length>3){
+        if (storedToken && storedToken.length>3){
             setIsLoggedIn(true)
             setUser((userData)=>({...userData, ['token']:storedToken}))
         }
     }, [])
     return (
         <>
-        <Test />
+        {/* <Test /> */}
         <Route exact path='/'>
             HOME
         </Route>
