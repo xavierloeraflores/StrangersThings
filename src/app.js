@@ -1,12 +1,23 @@
-import React  from 'react'
+import React, {useContext, useEffect}  from 'react'
 import { Route } from 'react-router';
 import Posts from './components/Posts';
 import Authentication from './components/Authentication'
 import Test from './components/Test';
 import Postform from './components/Postform';
 import Profile from './components/Profile';
+import { UserContext } from './context/UserContext';
 
 const App = () => {
+    const {setUser, setIsLoggedIn} = useContext(UserContext)
+    // const [isLoggedIn, setIsLoggedIn]
+    useEffect(()=>{
+        const storedToken= localStorage.getItem('userToken')
+        console.log("TOKEN",storedToken)
+        if (storedToken.length>3){
+            setIsLoggedIn(true)
+            setUser((userData)=>({...userData, ['token']:storedToken}))
+        }
+    }, [])
     return (
         <>
         <Test />

@@ -28,6 +28,7 @@ const Authentication = () => {
                 if(data.token){
                     setIsLoggedIn(true)
                     setUser((userData)=>({...userData, ['token']:data.token}))
+                    localStorage.setItem('userToken', data.token)
                     history.push("/home")
                 }else alert('error')
                  //Routes the user back to home
