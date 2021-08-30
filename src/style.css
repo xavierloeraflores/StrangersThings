@@ -26,8 +26,30 @@
     font-weight: bold;
 }
 
-#footer{
+/* #footer{
     background-color: cadetblue;
+} */
+#footer {
+    box-shadow: 0px 0px 1px black;
+    left:0px;
+    padding: 16px;
+    background-color: rgb(255, 191, 94);
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+#footer img  {
+    width: 150px;
+}
+#footer div {
+    width: 250px;
+    display: flex;
+    justify-content: center;
+}
+#footer span {
+    text-align: center;
+    font-size: 24px;
+    color: #1754A1;
 }
 
 #page {
