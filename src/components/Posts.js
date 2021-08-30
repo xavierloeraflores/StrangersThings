@@ -8,8 +8,8 @@ import { UserContext } from '../context/UserContext'
 const Posts = () => {
     const [posts,setPosts] = useState([])
     const {user, isLoggedIn} = useContext(UserContext)
+    const [filter, setFilter] = useState('')
 
-    
     useEffect(async ()=>{
 
         let postData = []
@@ -19,17 +19,25 @@ const Posts = () => {
         console.log(postData)
         setPosts(postData)
 
-        // const test = await API.login("testingboi", "The3Pass")
-        // console.log(test)
+
     },[])
+
+
     
     return (
-        <div>
+        <div id='post-page'>
             {isLoggedIn? <Link to='/postform'>Add new post.</Link>:<span>Sign in to make post</span>}
-            {posts ? console.log(posts):null}
-            <div id='posts'>
+            <div>
+                <label htmlFor='filter'>Filter: </label>
 
-            {posts ? posts.map((post,idx)=>{return <Post key={idx} post={post}/>}):null}
+            <input type='text' id='filter' onChange={(event)=>{
+                setFilter(event.target.value)
+            }}></input>
+            </div>
+            
+            
+            <div id='posts'>
+            {posts ? posts.map((post,idx)=>{if(post.title.includes(filter))return <Post key={idx} post={post}/>}):null}
             </div>
         </div>
     )

@@ -2,6 +2,7 @@ import React, {useContext, useState, useEffect} from 'react'
 import { useHistory } from 'react-router';
 import { UserContext } from '../context/UserContext';
 import API from '../apiClient';
+import Message from './Message';
 
 
 
@@ -35,6 +36,7 @@ const Profile = () =>{
     return(
         <div id='profile'>
         <h1>Profile</h1>
+        {messages.map((message, idx)=>{return(<Message key={idx} message={message}/>)})}
         </div>
     )
 

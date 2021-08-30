@@ -1,5 +1,5 @@
 
-const baseURL = 'https://strangers-things.herokuapp.com/api/2021-SJS-RM-WEB-PT'
+const baseURL = 'https://strangers-things.herokuapp.com/api/2105-SJS-RM-WEB-PT'
 
 class API {
     static async request({endpoint, method, body, token}){

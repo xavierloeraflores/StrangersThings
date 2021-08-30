@@ -65,6 +65,12 @@ form {
     display: flex;
     flex-flow:column nowrap;
 }
+
+#post-page{
+    display: flex;
+    flex-flow:column nowrap;
+    align-items: center;
+}
 #posts{
     display: flex;
     flex-flow:row wrap;
@@ -81,6 +87,21 @@ form {
     padding: .5em;
 }
 .post:hover{
+    transform: scale(1.05);
+    box-shadow: 5px 10px;
+    z-index: 5px;
+}
+
+.message{
+    background-color: white;
+    color:darkslateblue;
+    border: 1px solid black;
+    border-radius: 4px ;
+    width: 500px;
+    margin: 0em 1em 1em 1em;
+    padding: .5em;
+}
+.message:hover{
     transform: scale(1.05);
     box-shadow: 5px 10px;
     z-index: 5px;
